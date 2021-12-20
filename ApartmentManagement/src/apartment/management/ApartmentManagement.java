@@ -24,6 +24,7 @@ public class ApartmentManagement extends Application {
         
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
     }
 
     /**
