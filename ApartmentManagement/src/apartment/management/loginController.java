@@ -6,7 +6,14 @@ package apartment.management;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,10 +50,50 @@ public class loginController implements Initializable {
     private PasswordField txtpass;
 
   
-    
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+
     @FXML
-    public void loginSuccessfull(ActionEvent event) throws IOException {
-        
+    public void loginSuccessfull(ActionEvent event) throws IOException, SQLException {
+
+String name=txtname.getText();        
+        String pass=txtpass.getText();
+        if(name.equals("") && pass.equals(""))
+        {
+           JOptionPane.showMessageDialog(null, "Username or Password blank");
+        }
+       else
+        {
+          try
+            {
+              Class.forName("com.mysql.jdbc.Driver");
+              con=DriverManager.getConnection("jdbc:mysql://localhost/accounts", "root","");
+              pst = con.prepareStatement("select * from logins where username=? and password=?");
+              pst.setString(1,name);
+              pst.setString(2,pass); 
+              rs=pst.executeQuery();
+              if(rs.next())
+                {
+                    JOptionPane.showMessageDialog(null, "Login successful");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Login failed");
+                    txtname.setText("");
+                    txtpass.setText("");
+                    txtname.requestFocus();
+                }
+
+            }catch(ClassNotFoundException ex){
+               Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch(SQLException ex){
+              Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+}
+
+
+
+}
         Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
