@@ -21,11 +21,11 @@
             <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="135.0" text="Filter by Status" />
          </children>
       </HBox>
-      <TableView fx:id="rentsTableView" layoutX="14.0" layoutY="126.0" prefHeight="378.0" prefWidth="1151.0">
+      <TableView fx:id="rentsTableView" layoutX="14.0" layoutY="126.0" prefHeight="378.0" prefWidth="1151.0" stylesheets="@rentstyle.css">
         <columns>
-          <TableColumn fx:id="col_duedate" prefWidth="213.0" text="DueDate" />
-          <TableColumn fx:id="col_dueamount" prefWidth="515.0" text="Amount Due" />
-            <TableColumn fx:id="col_status" minWidth="0.0" prefWidth="227.0" text="Status" />
+          <TableColumn fx:id="col_duedate" prefWidth="256.0" text="DueDate" />
+          <TableColumn fx:id="col_dueamount" prefWidth="542.0" text="Amount Due" />
+            <TableColumn fx:id="col_status" minWidth="0.0" prefWidth="350.0" text="Status" />
         </columns>
       </TableView>
       <Label layoutX="31.0" layoutY="30.0" prefHeight="45.0" prefWidth="251.0" text="Outstanding Balance: ">
