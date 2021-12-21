@@ -4,20 +4,29 @@
  */
 package apartment.management;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 /**
  *
  * @author Saish
  */
 public class MainScreenController implements Initializable {
+    private Stage stage;
+    private Parent root;
+    private Scene scene;
     
     @FXML
     private Label label;
@@ -52,6 +61,16 @@ public class MainScreenController implements Initializable {
         mainPane.setCenter(view);
     }
     
+    @FXML
+    private void logout(ActionEvent event) throws IOException {
+        
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
