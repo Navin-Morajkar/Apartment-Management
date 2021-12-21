@@ -5,23 +5,38 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="579.0" prefWidth="1046.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="520.0" prefWidth="1183.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="apartment.management.RentScreenController">
    <children>
-      <Label layoutX="745.0" layoutY="48.0" prefHeight="59.0" prefWidth="274.0" text="Your Rent" textFill="#d00606">
+      <Label layoutX="974.0" layoutY="4.0" prefHeight="59.0" prefWidth="190.0" text="Your Rent" textFill="#d00606">
          <font>
             <Font name="System Bold" size="37.0" />
          </font>
       </Label>
-      <Button layoutX="52.0" layoutY="55.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="135.0" text="Filter By Month" />
-      <TableView layoutX="52.0" layoutY="140.0" prefHeight="411.0" prefWidth="956.0">
+      <HBox layoutX="889.0" layoutY="66.0" prefHeight="59.0" prefWidth="276.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="135.0" text="Filter By Month" />
+            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="135.0" text="Filter by Status" />
+         </children>
+      </HBox>
+      <TableView fx:id="rentsTableView" layoutX="14.0" layoutY="126.0" prefHeight="378.0" prefWidth="1151.0">
         <columns>
-          <TableColumn prefWidth="213.0" text="Date" />
-          <TableColumn prefWidth="415.0" text="Amount Due" />
-            <TableColumn minWidth="0.0" prefWidth="327.0" text="Status" />
+          <TableColumn fx:id="col_duedate" prefWidth="213.0" text="DueDate" />
+          <TableColumn fx:id="col_dueamount" prefWidth="515.0" text="Amount Due" />
+            <TableColumn fx:id="col_status" minWidth="0.0" prefWidth="227.0" text="Status" />
         </columns>
       </TableView>
-      <Button layoutX="249.0" layoutY="55.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="135.0" text="Filter by Status" />
+      <Label layoutX="31.0" layoutY="30.0" prefHeight="45.0" prefWidth="251.0" text="Outstanding Balance: ">
+         <font>
+            <Font name="Arial" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="67.0" prefHeight="45.0" prefWidth="251.0" text="Rs. 25,0000">
+         <font>
+            <Font name="Arial Black" size="21.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

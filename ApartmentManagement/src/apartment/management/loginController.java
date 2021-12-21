@@ -51,15 +51,17 @@ public class loginController implements Initializable {
 
   
     Connection con;
-    PreparedStatement pst;
-    ResultSet rs;
+    PreparedStatement pst,pst2;
+    ResultSet rs,rs2;
 
     @FXML
     public void loginSuccessfull(ActionEvent event) throws IOException, SQLException {
 
-        String name=txtname.getText();        
+        String username=txtname.getText();        
         String pass=txtpass.getText();
-        if(name.equals("") || pass.equals(""))
+        String name = "XX";
+        
+        if(username.equals("") || pass.equals(""))
         {
            JOptionPane.showMessageDialog(null, "Username or Password blank");
         }
@@ -70,18 +72,39 @@ public class loginController implements Initializable {
               Class.forName("com.mysql.jdbc.Driver");
               con=DriverManager.getConnection("jdbc:mysql://localhost/aptdb", "root","");
               pst = con.prepareStatement("select * from logins where username=? and password=?");
-              pst.setString(1,name);
+              pst2 = con.prepareStatement("select name from logins where username=? and password=?");
+              pst.setString(1,username);
               pst.setString(2,pass); 
-              rs=pst.executeQuery();
-              if(rs.next())
+              pst2.setString(1,username);
+              pst2.setString(2,pass); 
+             
+             
+              // Getting Name of the client, to be displayed on Mainscreen
+              rs2=pst2.executeQuery();
+              if(rs2.next())
                 {
+                    name = rs2.getString("name");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Login failed");
+                    txtname.setText("");
+                    txtpass.setText("");
+                    txtname.requestFocus();
+                }
+              
+               // Login Authorization Section
+               rs=pst.executeQuery();
+               if(rs.next())
+                {
+                    System.out.println(rs);
                     JOptionPane.showMessageDialog(null, "Login successful");
 //                    Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
                     FXMLLoader loader = new FXMLLoader((getClass().getResource("MainScreen.fxml"))); 
                     root = loader.load();  // loading the mainscreen
                     MainScreenController msc = loader.getController();
                     msc.greetMsg(name);  // To send username to mainscreen for displaying.
-                    
+                    msc.getUsername(username);
                     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
