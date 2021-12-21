@@ -53,6 +53,7 @@ public class loginController implements Initializable {
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
+        stage.centerOnScreen();
     }
 
     @Override

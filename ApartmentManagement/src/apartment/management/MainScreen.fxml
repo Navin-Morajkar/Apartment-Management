@@ -74,7 +74,7 @@
             <Font name="Arial Bold" size="35.0" />
          </font>
       </Label>
-      <Label layoutX="800.0" layoutY="21.0" prefHeight="59.0" prefWidth="356.0" text="Apartment Manager" textFill="#f3d5a5">
+      <Label layoutX="737.0" layoutY="21.0" prefHeight="59.0" prefWidth="419.0" text="Apartment Management" textFill="#f3d5a5">
          <font>
             <Font name="Arial Bold" size="35.0" />
          </font>

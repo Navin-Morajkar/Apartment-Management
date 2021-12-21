@@ -70,6 +70,7 @@ public class MainScreenController implements Initializable {
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
+        stage.centerOnScreen();
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
