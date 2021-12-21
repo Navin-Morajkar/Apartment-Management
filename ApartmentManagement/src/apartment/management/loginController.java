@@ -59,7 +59,7 @@ public class loginController implements Initializable {
 
         String name=txtname.getText();        
         String pass=txtpass.getText();
-        if(name.equals("") && pass.equals(""))
+        if(name.equals("") || pass.equals(""))
         {
            JOptionPane.showMessageDialog(null, "Username or Password blank");
         }
@@ -76,13 +76,13 @@ public class loginController implements Initializable {
               if(rs.next())
                 {
                     JOptionPane.showMessageDialog(null, "Login successful");
-        Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        stage.centerOnScreen();
+                    Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
+                    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                    stage.setResizable(false);
+                    stage.centerOnScreen();
                 }
                 else
                 {
