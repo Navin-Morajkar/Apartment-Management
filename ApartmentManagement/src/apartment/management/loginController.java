@@ -57,7 +57,7 @@ public class loginController implements Initializable {
     @FXML
     public void loginSuccessfull(ActionEvent event) throws IOException, SQLException {
 
-String name=txtname.getText();        
+        String name=txtname.getText();        
         String pass=txtpass.getText();
         if(name.equals("") && pass.equals(""))
         {
@@ -68,7 +68,7 @@ String name=txtname.getText();
           try
             {
               Class.forName("com.mysql.jdbc.Driver");
-              con=DriverManager.getConnection("jdbc:mysql://localhost/accounts", "root","");
+              con=DriverManager.getConnection("jdbc:mysql://localhost/aptdb", "root","");
               pst = con.prepareStatement("select * from logins where username=? and password=?");
               pst.setString(1,name);
               pst.setString(2,pass); 
@@ -76,6 +76,13 @@ String name=txtname.getText();
               if(rs.next())
                 {
                     JOptionPane.showMessageDialog(null, "Login successful");
+        Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        stage.centerOnScreen();
                 }
                 else
                 {
@@ -90,17 +97,7 @@ String name=txtname.getText();
             } catch(SQLException ex){
               Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
 }
-
-
-
-}
-        Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        stage.centerOnScreen();
+}        
     }
 
     @Override
