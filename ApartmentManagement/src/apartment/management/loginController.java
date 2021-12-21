@@ -69,7 +69,7 @@ public class loginController implements Initializable {
         {
           try
             {
-              Class.forName("com.mysql.jdbc.Driver");
+              Class.forName("com.mysql.cj.jdbc.Driver");
               con=DriverManager.getConnection("jdbc:mysql://localhost/aptdb", "root","");
               pst = con.prepareStatement("select * from logins where username=? and password=?");
               pst2 = con.prepareStatement("select name from logins where username=? and password=?");
