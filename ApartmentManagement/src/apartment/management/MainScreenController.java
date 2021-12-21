@@ -29,7 +29,7 @@ public class MainScreenController implements Initializable {
     private Scene scene;
     
     @FXML
-    private Label label;
+    private Label welcomeLabel;
     
     @FXML
     private BorderPane mainPane;
@@ -71,6 +71,11 @@ public class MainScreenController implements Initializable {
         stage.show();
         stage.setResizable(false);
         stage.centerOnScreen();
+    }
+    
+    public void greetMsg(String username)
+    {
+        welcomeLabel.setText("Welcome, " + username);
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {

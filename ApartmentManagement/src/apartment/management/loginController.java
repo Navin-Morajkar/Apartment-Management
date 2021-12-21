@@ -76,7 +76,12 @@ public class loginController implements Initializable {
               if(rs.next())
                 {
                     JOptionPane.showMessageDialog(null, "Login successful");
-                    Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
+//                    Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
+                    FXMLLoader loader = new FXMLLoader((getClass().getResource("MainScreen.fxml"))); 
+                    root = loader.load();  // loading the mainscreen
+                    MainScreenController msc = loader.getController();
+                    msc.greetMsg(name);  // To send username to mainscreen for displaying.
+                    
                     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
