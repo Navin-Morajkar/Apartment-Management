@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2021 at 06:04 AM
+-- Generation Time: Dec 27, 2021 at 05:51 PM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.0
+-- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -73,7 +73,10 @@ CREATE TABLE `rents` (
 --
 
 INSERT INTO `rents` (`username`, `duedate`, `dueamount`, `status`) VALUES
-('a1', '2021-12-22', 25000, 'UNPAID');
+('a1', '2021-12-23', 1577, 'UNPAID'),
+('a1', '2021-12-24', 9000, 'PAID'),
+('a1', '2021-12-25', 5200, 'PAID'),
+('a1', '2021-12-26', 6990, 'UNPAID');
 
 --
 -- Indexes for dumped tables
@@ -89,7 +92,7 @@ ALTER TABLE `logins`
 -- Indexes for table `rents`
 --
 ALTER TABLE `rents`
-  ADD PRIMARY KEY (`username`);
+  ADD KEY `username` (`username`);
 
 --
 -- Constraints for dumped tables

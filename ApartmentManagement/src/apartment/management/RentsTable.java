@@ -17,10 +17,10 @@ public class RentsTable {
     
     String duedate,status,dueamount;
 
-    public RentsTable(String duedate, String status, String dueamount) {
+    public RentsTable(String duedate,  String dueamount, String status) {
         this.duedate = duedate;
-        this.status = status;
         this.dueamount = dueamount;
+        this.status = status;
     }
 
     public String getDuedate() {

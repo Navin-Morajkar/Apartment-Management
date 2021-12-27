@@ -57,7 +57,9 @@ public class loginController implements Initializable {
     @FXML
     public void loginSuccessfull(ActionEvent event) throws IOException, SQLException {
 
-        String username=txtname.getText();        
+        String username=txtname.getText(); 
+        GlobalData.setUsername(username); 
+      
         String pass=txtpass.getText();
         String name = "XX";
         

@@ -24,23 +24,18 @@ public class LoadScreen {
         
         try {
             
-//            URL fileurl =  ApartmentManagement.class.getResource("/apartment/management/" + filename + ".fxml");
+            URL fileurl =  ApartmentManagement.class.getResource("/apartment/management/" + filename + ".fxml");
             
             
-//            if(fileurl == null)
-//            {
-//                throw new java.io.FileNotFoundException("FXML file not found!");
-//            }
-//            FXMLLoader ld = new FXMLLoader().load(fileurl);
-            FXMLLoader ld = new FXMLLoader(ApartmentManagement.class.getResource("/apartment/management/" + filename + ".fxml"));
-            view = (Pane) ld.load();
-            if("RentScreen".equals(filename))
+            if(fileurl == null)
             {
-                RentScreenController rsc = ld.getController();
-                
-                rsc.setUsername(Username);
+                throw new java.io.FileNotFoundException("FXML file not found!");
             }
             
+//          FXMLLoader ld = new FXMLLoader(ApartmentManagement.class.getResource("/apartment/management/" + filename + ".fxml"));
+//          view = (Pane) ld.load();
+            view = new FXMLLoader().load(fileurl);
+//  
            
             
         }
