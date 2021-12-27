@@ -50,6 +50,7 @@ public class RentScreenController implements Initializable {
     public void setUsername(String username)
     {
         Username = username;
+        System.out.println(Username +" RentscreenUserid");
     }
     
      
@@ -68,9 +69,10 @@ public class RentScreenController implements Initializable {
 //            ResultSet rs = con.createStatement().executeQuery("Select duedate,dueamount,status FROM rent where username = ? " );
             
           
-            statement = con.prepareStatement( "Select duedate,dueamount,status FROM rents where username = ? ");
-            statement.setString(1, Username);
+            statement = con.prepareStatement( "Select duedate,dueamount,status FROM rents where username = '" + Username + "'");
 //            System.out.println(Username);
+//            statement.setString(1, Username);
+            System.out.println("Trystatement userid" + Username);
             ResultSet rs = statement.executeQuery();
            
             

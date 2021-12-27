@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -23,9 +24,11 @@ public class ApartmentManagement extends Application {
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
-        stage.show();
+//        stage.initStyle(StageStyle.UNDECORATED);        // To make borderless window use this line.
         stage.setResizable(false);
         stage.centerOnScreen();
+        stage.show();
+       
     }
 
     /**

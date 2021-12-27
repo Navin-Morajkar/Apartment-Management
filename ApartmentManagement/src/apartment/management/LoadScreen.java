@@ -16,21 +16,31 @@ import javafx.fxml.FXMLLoader;
 public class LoadScreen {
     
     private Pane view;
-   
-    public Pane getPage(String filename)
+    private String Username;
+    
+    public Pane getPage(String filename, String Username)
     {
         
         
         try {
             
-            URL fileurl =  ApartmentManagement.class.getResource("/apartment/management/" + filename + ".fxml");
+//            URL fileurl =  ApartmentManagement.class.getResource("/apartment/management/" + filename + ".fxml");
             
             
-            if(fileurl == null)
+//            if(fileurl == null)
+//            {
+//                throw new java.io.FileNotFoundException("FXML file not found!");
+//            }
+//            FXMLLoader ld = new FXMLLoader().load(fileurl);
+            FXMLLoader ld = new FXMLLoader(ApartmentManagement.class.getResource("/apartment/management/" + filename + ".fxml"));
+            view = (Pane) ld.load();
+            if("RentScreen".equals(filename))
             {
-                throw new java.io.FileNotFoundException("FXML file not found!");
+                RentScreenController rsc = ld.getController();
+                
+                rsc.setUsername(Username);
             }
-            view = new FXMLLoader().load(fileurl);
+            
            
             
         }
