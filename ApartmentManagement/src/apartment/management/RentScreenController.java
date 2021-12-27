@@ -5,6 +5,7 @@
 package apartment.management;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -21,6 +22,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
  *
  * @author Saish
  */
+
+
 public class RentScreenController implements Initializable {
 
     /**
@@ -28,7 +31,7 @@ public class RentScreenController implements Initializable {
      * 
      */
     
-    private String Username;
+   
     
     @FXML
     private TableView<RentsTable>rentsTableView;
@@ -42,12 +45,14 @@ public class RentScreenController implements Initializable {
     @FXML
     private TableColumn<RentsTable,String>col_status;
     
+    PreparedStatement statement;
+    public String Username;
     public void setUsername(String username)
     {
         Username = username;
     }
     
-    
+     
     ObservableList<RentsTable> oblist = FXCollections.observableArrayList();
     
     
@@ -57,9 +62,18 @@ public class RentScreenController implements Initializable {
         
         try{
             
+            
             Connection con = DBConnector.getConnection();
         
-            ResultSet rs = con.createStatement().executeQuery("Select duedate,dueamount,status FROM a1rent");
+//            ResultSet rs = con.createStatement().executeQuery("Select duedate,dueamount,status FROM rent where username = ? " );
+            
+          
+            statement = con.prepareStatement( "Select duedate,dueamount,status FROM rents where username = ? ");
+            statement.setString(1, Username);
+//            System.out.println(Username);
+            ResultSet rs = statement.executeQuery();
+           
+            
             
             while(rs.next())
             {

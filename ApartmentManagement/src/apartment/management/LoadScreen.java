@@ -16,7 +16,7 @@ import javafx.fxml.FXMLLoader;
 public class LoadScreen {
     
     private Pane view;
-    
+   
     public Pane getPage(String filename)
     {
         
@@ -31,6 +31,8 @@ public class LoadScreen {
                 throw new java.io.FileNotFoundException("FXML file not found!");
             }
             view = new FXMLLoader().load(fileurl);
+           
+            
         }
         
         
@@ -41,5 +43,7 @@ public class LoadScreen {
                 }
         return view;
     }
+    
+//   
     
 }

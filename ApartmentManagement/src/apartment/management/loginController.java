@@ -53,7 +53,7 @@ public class loginController implements Initializable {
     Connection con;
     PreparedStatement pst,pst2;
     ResultSet rs,rs2;
-
+    
     @FXML
     public void loginSuccessfull(ActionEvent event) throws IOException, SQLException {
 
@@ -100,11 +100,15 @@ public class loginController implements Initializable {
                     System.out.println(rs);
                     JOptionPane.showMessageDialog(null, "Login successful");
 //                    Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
-                    FXMLLoader loader = new FXMLLoader((getClass().getResource("MainScreen.fxml"))); 
+                    FXMLLoader loader= new FXMLLoader((getClass().getResource("MainScreen.fxml"))); 
+                   
                     root = loader.load();  // loading the mainscreen
+             
                     MainScreenController msc = loader.getController();
-                    msc.greetMsg(name);  // To send username to mainscreen for displaying.
-                    msc.getUsername(username);
+                
+                    msc.sendData(name,username);  // To send username to mainscreen for displaying.
+                    
+                    
                     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     Scene scene = new Scene(root);
                     stage.setScene(scene);

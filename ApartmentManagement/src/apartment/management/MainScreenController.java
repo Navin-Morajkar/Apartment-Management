@@ -6,6 +6,7 @@ package apartment.management;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashSet;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,7 +28,7 @@ public class MainScreenController implements Initializable {
     private Stage stage;
     private Parent root;
     private Scene scene;
-    public String username;
+    public String Username;
     
     @FXML
     private Label welcomeLabel;
@@ -36,12 +37,13 @@ public class MainScreenController implements Initializable {
     private BorderPane mainPane;
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
+    private void handleButtonAction(ActionEvent event) throws IOException {
         System.out.println("You clicked me!");
-        
+       
         LoadScreen loader = new LoadScreen();
         Pane view = loader.getPage("RentScreen");
         mainPane.setCenter(view);
+       
     }
     
     @FXML
@@ -74,16 +76,14 @@ public class MainScreenController implements Initializable {
         stage.centerOnScreen();
     }
     
-    public void greetMsg(String name)
+    public void sendData(String name,String username)
     {
         welcomeLabel.setText("Welcome, " + name);
+        Username = username;
+        System.out.println(username);
     }
     
-    public void getUsername(String username)
-    {
-        String Username = username;
-        
-    }
+   
     
     
     @Override
