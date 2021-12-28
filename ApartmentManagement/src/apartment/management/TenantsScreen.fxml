@@ -6,18 +6,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="579.0" prefWidth="1046.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="520.0" prefWidth="1183.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="apartment.management.TenantsScreenController">
    <children>
-      <Label layoutX="44.0" layoutY="32.0" prefHeight="51.0" prefWidth="260.0" text="Tenants Details" textFill="#d00606">
+      <Label layoutX="858.0" layoutY="14.0" prefHeight="59.0" prefWidth="272.0" text="Tenants Details" textFill="#d00606">
          <font>
-            <Font name="System Bold" size="28.0" />
+            <Font name="System Bold" size="37.0" />
          </font>
       </Label>
-      <TableView layoutY="115.0" prefHeight="450.0" prefWidth="1074.0">
+      <TableView fx:id="tentantstableview" layoutX="14.0" layoutY="126.0" prefHeight="378.0" prefWidth="1151.0" stylesheets="@rentstyle.css">
         <columns>
-          <TableColumn prefWidth="213.0" text="FullName" />
-          <TableColumn prefWidth="415.0" text="Flat No" />
-            <TableColumn minWidth="0.0" prefWidth="114.0" text="Phone No" />
+          <TableColumn fx:id="col_fullname" prefWidth="256.0" text="Fullname" />
+          <TableColumn fx:id="col_flatno" prefWidth="542.0" text="Flat no" />
+            <TableColumn fx:id="col_phoneno" minWidth="0.0" prefWidth="350.0" text="Phone no" />
         </columns>
       </TableView>
    </children>

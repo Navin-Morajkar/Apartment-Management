@@ -121,33 +121,33 @@ public class RentScreenController implements Initializable {
         rentsTableView.getItems().clear();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+        @Override
+        public void initialize(URL url, ResourceBundle rb) {
 
-        try {
+            try {
 
-            Username = GlobalData.getUsername();
+                Username = GlobalData.getUsername();
 
-            Connection con = DBConnector.getConnection();
+                Connection con = DBConnector.getConnection();
 
-            statement = con.prepareStatement("Select duedate,dueamount,status FROM rents where username = ?");
+                statement = con.prepareStatement("Select duedate,dueamount,status FROM rents where username = ?");
 
-            statement.setString(1, Username);
-            ResultSet rs = statement.executeQuery();
+                statement.setString(1, Username);
+                ResultSet rs = statement.executeQuery();
 
-            while (rs.next()) {
-                oblist.add(new RentsTable(rs.getString("duedate"), rs.getString("dueamount"), rs.getString("status")));
+                while (rs.next()) {
+                    oblist.add(new RentsTable(rs.getString("duedate"), rs.getString("dueamount"), rs.getString("status")));
+                }
+            } catch (SQLException ex) {
+    //            Logger.getLogger(RentScreenController.class.getName()).log(Level.SEVERE,null,ex);
+                System.out.println(ex);
             }
-        } catch (SQLException ex) {
-//            Logger.getLogger(RentScreenController.class.getName()).log(Level.SEVERE,null,ex);
-            System.out.println(ex);
+
+            col_duedate.setCellValueFactory(new PropertyValueFactory<>("duedate"));
+            col_dueamount.setCellValueFactory(new PropertyValueFactory<>("dueamount"));
+            col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+            rentsTableView.setItems(oblist);
         }
-
-        col_duedate.setCellValueFactory(new PropertyValueFactory<>("duedate"));
-        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("dueamount"));
-        col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
-
-        rentsTableView.setItems(oblist);
-    }
 
 }

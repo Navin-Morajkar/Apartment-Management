@@ -127,9 +127,9 @@ public class loginController implements Initializable {
                 }
 
             }catch(ClassNotFoundException ex){
-               Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+               Logger.getLogger(TenantsScreenController.class.getName()).log(Level.SEVERE, null, ex);
             } catch(SQLException ex){
-              Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+              Logger.getLogger(TenantsScreenController.class.getName()).log(Level.SEVERE, null, ex);
 }
 }        
     }
