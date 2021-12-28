@@ -5,14 +5,16 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="520.0" prefWidth="1183.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="apartment.management.RentScreenController">
    <children>
-      <Label layoutX="974.0" layoutY="4.0" prefHeight="59.0" prefWidth="190.0" text="Your Rent" textFill="#d00606">
+      <Label layoutX="945.0" layoutY="13.0" prefHeight="58.0" prefWidth="159.0" text="Your Rent" textFill="#d00606">
          <font>
-            <Font name="System Bold" size="37.0" />
+            <Font name="System Bold" size="32.0" />
          </font>
       </Label>
       <TableView fx:id="rentsTableView" layoutX="14.0" layoutY="126.0" prefHeight="378.0" prefWidth="1151.0" stylesheets="@style.css">
@@ -38,5 +40,10 @@
           <MenuItem fx:id="unpaidBtn" mnemonicParsing="false" onAction="#onUnpaidFilterSelect" text="Unpaid" />
         </items>
       </MenuButton>
+      <ImageView fitHeight="45.0" fitWidth="42.0" layoutX="1112.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/rentico.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
