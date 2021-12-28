@@ -15,7 +15,7 @@
             <Font name="System Bold" size="37.0" />
          </font>
       </Label>
-      <TableView fx:id="rentsTableView" layoutX="14.0" layoutY="126.0" prefHeight="378.0" prefWidth="1151.0" stylesheets="@rentstyle.css">
+      <TableView fx:id="rentsTableView" layoutX="14.0" layoutY="126.0" prefHeight="378.0" prefWidth="1151.0" stylesheets="@style.css">
         <columns>
           <TableColumn fx:id="col_duedate" prefWidth="256.0" text="DueDate" />
           <TableColumn fx:id="col_dueamount" prefWidth="542.0" text="Amount Due" />

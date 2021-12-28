@@ -18,14 +18,13 @@ public class LoadScreen {
     private Pane view;
     private String Username;
     
-    public Pane getPage(String filename, String Username)
+    public Pane getPage(String filename)
     {
         
         
         try {
             
             URL fileurl =  ApartmentManagement.class.getResource("/apartment/management/" + filename + ".fxml");
-            
             
             if(fileurl == null)
             {

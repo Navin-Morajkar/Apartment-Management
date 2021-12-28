@@ -53,7 +53,7 @@ public class ActivitiesScreenController implements Initializable {
             
             Connection con = DBConnector.getConnection();
 
-            statement = con.prepareStatement("Select * FROM activities");
+            statement = con.prepareStatement("Select * FROM activities ");
 
             //statement.setString(1, Username);
             ResultSet rs = statement.executeQuery();

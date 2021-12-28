@@ -50,8 +50,8 @@ public class loginController implements Initializable {
     private PasswordField txtpass;
 
     Connection con;
-    PreparedStatement pst, pst2;
-    ResultSet rs, rs2;
+    PreparedStatement pst;
+    ResultSet rs ;
 
     @FXML
     public void loginSuccessfull(ActionEvent event) throws IOException, SQLException {
@@ -69,26 +69,17 @@ public class loginController implements Initializable {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 con = DriverManager.getConnection("jdbc:mysql://localhost/aptdb", "root", "");
                 pst = con.prepareStatement("select * from logins where username=? and password=?");
-                pst2 = con.prepareStatement("select name from logins where username=? and password=?");
+               
                 pst.setString(1, username);
                 pst.setString(2, pass);
-                pst2.setString(1, username);
-                pst2.setString(2, pass);
-
+              
                 // Getting Name of the client, to be displayed on Mainscreen
-                rs2 = pst2.executeQuery();
-                if (rs2.next()) {
-                    name = rs2.getString("name");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Login failed");
-                    txtname.setText("");
-                    txtpass.setText("");
-                    txtname.requestFocus();
-                }
+                
 
                 // Login Authorization Section
                 rs = pst.executeQuery();
                 if (rs.next()) {
+                    name = rs.getString("name");
                     System.out.println(rs);
                     JOptionPane.showMessageDialog(null, "Login successful");
 //                    Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));

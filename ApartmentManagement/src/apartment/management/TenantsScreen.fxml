@@ -8,12 +8,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="520.0" prefWidth="1183.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="apartment.management.TenantsScreenController">
    <children>
-      <Label layoutX="858.0" layoutY="14.0" prefHeight="59.0" prefWidth="272.0" text="Tenants Details" textFill="#d00606">
+      <Label layoutX="883.0" layoutY="33.0" prefHeight="59.0" prefWidth="272.0" text="Tenants Details" textFill="#d00606">
          <font>
             <Font name="System Bold" size="37.0" />
          </font>
       </Label>
-      <TableView fx:id="tenantstableview" layoutX="14.0" layoutY="126.0" prefHeight="378.0" prefWidth="1151.0" stylesheets="@rentstyle.css">
+      <TableView fx:id="tenantstableview" layoutX="14.0" layoutY="126.0" prefHeight="378.0" prefWidth="1151.0" stylesheets="@style.css">
         <columns>
           <TableColumn fx:id="col_fullname" prefWidth="256.0" text="Fullname" />
           <TableColumn fx:id="col_flatno" prefWidth="542.0" text="Flat no" />

@@ -48,7 +48,7 @@ public class MainScreenController implements Initializable {
         System.out.println("You clicked me!");
 
         LoadScreen loader = new LoadScreen();
-        Pane view = loader.getPage("RentScreen", Username);
+        Pane view = loader.getPage("RentScreen");
         mainPane.setCenter(view);
 
     }
@@ -58,7 +58,7 @@ public class MainScreenController implements Initializable {
         System.out.println("You clicked me!");
 
         LoadScreen loader = new LoadScreen();
-        Pane view = loader.getPage("TenantsScreen", Username);
+        Pane view = loader.getPage("TenantsScreen");
         mainPane.setCenter(view);
     }
 
@@ -67,7 +67,7 @@ public class MainScreenController implements Initializable {
         System.out.println("You clicked me!");
 
         LoadScreen loader = new LoadScreen();
-        Pane view = loader.getPage("ActivitiesScreen", Username);
+        Pane view = loader.getPage("ActivitiesScreen");
         mainPane.setCenter(view);
     }
 
