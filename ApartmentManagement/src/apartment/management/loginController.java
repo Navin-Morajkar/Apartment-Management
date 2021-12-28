@@ -35,11 +35,11 @@ import javax.swing.JOptionPane;
  * @author Saish
  */
 public class loginController implements Initializable {
-    
+
     private Stage stage;
     private Parent root;
     private Scene scene;
-    
+
     @FXML
     private TextField txtname;
 
@@ -49,94 +49,88 @@ public class loginController implements Initializable {
     @FXML
     private PasswordField txtpass;
 
-  
     Connection con;
-    PreparedStatement pst,pst2;
-    ResultSet rs,rs2;
-    
+    PreparedStatement pst, pst2;
+    ResultSet rs, rs2;
+
     @FXML
     public void loginSuccessfull(ActionEvent event) throws IOException, SQLException {
 
-        String username=txtname.getText(); 
-        GlobalData.setUsername(username); 
-      
-        String pass=txtpass.getText();
+        String username = txtname.getText();
+        GlobalData.setUsername(username);
+
+        String pass = txtpass.getText();
         String name = "XX";
-        
-        if(username.equals("") || pass.equals(""))
-        {
-           JOptionPane.showMessageDialog(null, "Username or Password blank");
-        }
-       else
-        {
-          try
-            {
-              Class.forName("com.mysql.cj.jdbc.Driver");
-              con=DriverManager.getConnection("jdbc:mysql://localhost/aptdb", "root","");
-              pst = con.prepareStatement("select * from logins where username=? and password=?");
-              pst2 = con.prepareStatement("select name from logins where username=? and password=?");
-              pst.setString(1,username);
-              pst.setString(2,pass); 
-              pst2.setString(1,username);
-              pst2.setString(2,pass); 
-             
-             
-              // Getting Name of the client, to be displayed on Mainscreen
-              rs2=pst2.executeQuery();
-              if(rs2.next())
-                {
+
+        if (username.equals("") || pass.equals("")) {
+            JOptionPane.showMessageDialog(null, "Username or Password blank");
+        } else {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                con = DriverManager.getConnection("jdbc:mysql://localhost/aptdb", "root", "");
+                pst = con.prepareStatement("select * from logins where username=? and password=?");
+                pst2 = con.prepareStatement("select name from logins where username=? and password=?");
+                pst.setString(1, username);
+                pst.setString(2, pass);
+                pst2.setString(1, username);
+                pst2.setString(2, pass);
+
+                // Getting Name of the client, to be displayed on Mainscreen
+                rs2 = pst2.executeQuery();
+                if (rs2.next()) {
                     name = rs2.getString("name");
-                }
-                else
-                {
+                } else {
                     JOptionPane.showMessageDialog(null, "Login failed");
                     txtname.setText("");
                     txtpass.setText("");
                     txtname.requestFocus();
                 }
-              
-               // Login Authorization Section
-               rs=pst.executeQuery();
-               if(rs.next())
-                {
+
+                // Login Authorization Section
+                rs = pst.executeQuery();
+                if (rs.next()) {
                     System.out.println(rs);
                     JOptionPane.showMessageDialog(null, "Login successful");
 //                    Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
-                    FXMLLoader loader= new FXMLLoader((getClass().getResource("MainScreen.fxml"))); 
-                   
+                    FXMLLoader loader = new FXMLLoader((getClass().getResource("MainScreen.fxml")));
+
                     root = loader.load();  // loading the mainscreen
-             
+
                     MainScreenController msc = loader.getController();
-                
-                    msc.sendData(name,username);  // To send username to mainscreen for displaying.
-                    
-                    
-                    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+                    msc.sendData(name, username);  // To send username to mainscreen for displaying.
+
+                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
                     stage.show();
                     stage.setResizable(false);
                     stage.centerOnScreen();
-                }
-                else
-                {
+                } else {
                     JOptionPane.showMessageDialog(null, "Login failed");
                     txtname.setText("");
                     txtpass.setText("");
                     txtname.requestFocus();
                 }
 
-            }catch(ClassNotFoundException ex){
-               Logger.getLogger(TenantsScreenController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch(SQLException ex){
-              Logger.getLogger(TenantsScreenController.class.getName()).log(Level.SEVERE, null, ex);
-}
-}        
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(TenantsScreenController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(TenantsScreenController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    @FXML
+    public void closeWindow(ActionEvent event) {
+
+        System.exit(0);
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb
+    ) {
         // TODO
-    }    
-    
+    }
+
 }

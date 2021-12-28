@@ -22,14 +22,14 @@
             <TableColumn fx:id="col_status" minWidth="0.0" prefWidth="350.0" text="Status" />
         </columns>
       </TableView>
-      <Label layoutX="31.0" layoutY="30.0" prefHeight="45.0" prefWidth="251.0" text="Outstanding Balance: ">
+      <Label layoutX="36.0" layoutY="22.0" prefHeight="45.0" prefWidth="251.0" text="Total Amount Due :">
          <font>
             <Font name="Arial" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="36.0" layoutY="67.0" prefHeight="45.0" prefWidth="251.0" text="Rs. 25,0000">
+      <Label fx:id="bal_due" alignment="CENTER" layoutX="36.0" layoutY="67.0" prefHeight="45.0" prefWidth="251.0" style="-fx-background-color: #ffe0cc;" text="₹ 0">
          <font>
-            <Font name="Arial Black" size="21.0" />
+            <Font name="Arial Bold" size="25.0" />
          </font>
       </Label>
       <MenuButton layoutX="1069.0" layoutY="76.0" mnemonicParsing="false" text="Filter By">

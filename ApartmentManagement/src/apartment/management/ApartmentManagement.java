@@ -24,7 +24,7 @@ public class ApartmentManagement extends Application {
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
-//        stage.initStyle(StageStyle.UNDECORATED);        // To make borderless window use this line.
+        stage.initStyle(StageStyle.UNDECORATED);        // To make borderless window use this line.
         stage.setResizable(false);
         stage.centerOnScreen();
         stage.show();

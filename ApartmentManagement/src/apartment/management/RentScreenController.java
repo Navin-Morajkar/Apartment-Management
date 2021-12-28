@@ -16,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -51,7 +52,10 @@ public class RentScreenController implements Initializable {
     @FXML
     private MenuItem unpaidBtn;
 
-    PreparedStatement statement;
+    @FXML
+    private Label bal_due;
+
+    PreparedStatement statement, bal;
     public String Username;
 //  
     ObservableList<RentsTable> oblist = FXCollections.observableArrayList();
@@ -59,11 +63,11 @@ public class RentScreenController implements Initializable {
     @FXML
     public void onUnpaidFilterSelect(ActionEvent event) throws IOException {
 
-    try {
+        try {
             clearRentTable();
             Username = GlobalData.getUsername();
             Connection con = DBConnector.getConnection();
-            
+
             statement = con.prepareStatement("Select duedate,dueamount,status FROM rents where username = ? AND status = 'UNPAID'");
 
             statement.setString(1, Username);
@@ -82,17 +86,16 @@ public class RentScreenController implements Initializable {
         col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         rentsTableView.setItems(oblist);
-    
 
     }
 
- public void onPaidFilterSelect(ActionEvent event) throws IOException {
+    public void onPaidFilterSelect(ActionEvent event) throws IOException {
 
-    try {
+        try {
             clearRentTable();
             Username = GlobalData.getUsername();
             Connection con = DBConnector.getConnection();
-            
+
             statement = con.prepareStatement("Select duedate,dueamount,status FROM rents where username = ? AND status = 'PAID'");
 
             statement.setString(1, Username);
@@ -111,11 +114,8 @@ public class RentScreenController implements Initializable {
         col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         rentsTableView.setItems(oblist);
-    
 
     }
-
-   
 
     public void clearRentTable() {
         rentsTableView.getItems().clear();
@@ -131,12 +131,19 @@ public class RentScreenController implements Initializable {
             Connection con = DBConnector.getConnection();
 
             statement = con.prepareStatement("Select duedate,dueamount,status FROM rents where username = ?");
+            bal = con.prepareStatement("Select SUM(dueamount) AS bal FROM rents where username = ? AND status = 'UNPAID'");
 
             statement.setString(1, Username);
+            bal.setString(1, Username);
+
             ResultSet rs = statement.executeQuery();
+            ResultSet rs2 = bal.executeQuery();
 
             while (rs.next()) {
                 oblist.add(new RentsTable(rs.getString("duedate"), rs.getString("dueamount"), rs.getString("status")));
+            }
+            while (rs2.next()) {
+                bal_due.setText("₹ " +rs2.getString("bal"));
             }
         } catch (SQLException ex) {
 //            Logger.getLogger(RentScreenController.class.getName()).log(Level.SEVERE,null,ex);
