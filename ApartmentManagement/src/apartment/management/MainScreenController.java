@@ -47,7 +47,7 @@ public class MainScreenController implements Initializable {
     }
     
     @FXML
-    private void handleButtonAction2(ActionEvent event) {
+    private void handleButtonAction2(ActionEvent event) throws IOException {
         System.out.println("You clicked me!");
         
         LoadScreen loader = new LoadScreen();

@@ -22,11 +22,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
  *
  * @author RISHAB GHANTI
  */
-class TenantsScreenController implements Initializable {
+public class TenantsScreenController implements Initializable {
     
 
 @FXML
-    private TableView<Tenantstable> tentantstableview;
+    private TableView<Tenantstable> tenantstableview;
 
     @FXML
     private TableColumn<Tenantstable, String> col_fullname;
@@ -64,7 +64,7 @@ PreparedStatement statement;
         col_flatno.setCellValueFactory(new PropertyValueFactory<>("flatno"));
         col_phoneno.setCellValueFactory(new PropertyValueFactory<>("phoneno"));
 
-        tentantstableview.setItems(oblist);
+        tenantstableview.setItems(oblist);
     }
 
 }

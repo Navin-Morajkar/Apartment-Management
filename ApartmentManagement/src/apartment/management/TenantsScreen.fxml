@@ -13,7 +13,7 @@
             <Font name="System Bold" size="37.0" />
          </font>
       </Label>
-      <TableView fx:id="tentantstableview" layoutX="14.0" layoutY="126.0" prefHeight="378.0" prefWidth="1151.0" stylesheets="@rentstyle.css">
+      <TableView fx:id="tenantstableview" layoutX="14.0" layoutY="126.0" prefHeight="378.0" prefWidth="1151.0" stylesheets="@rentstyle.css">
         <columns>
           <TableColumn fx:id="col_fullname" prefWidth="256.0" text="Fullname" />
           <TableColumn fx:id="col_flatno" prefWidth="542.0" text="Flat no" />

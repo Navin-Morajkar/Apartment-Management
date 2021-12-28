@@ -44,7 +44,7 @@ public class LoadScreen {
         catch(Exception e)
                 {
                     System.out.println("No screen" + filename + " Please check FXML Loader");
-                   
+                    System.out.println(e);
                 }
         return view;
     }

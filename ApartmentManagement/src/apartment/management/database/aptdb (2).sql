@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2021 at 05:51 PM
+-- Generation Time: Dec 28, 2021 at 10:59 AM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- PHP Version: 7.3.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,6 +26,26 @@ USE `aptdb`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `activities`
+--
+
+DROP TABLE IF EXISTS `activities`;
+CREATE TABLE `activities` (
+  `date` date NOT NULL,
+  `activityname` varchar(20) NOT NULL,
+  `time` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `activities`
+--
+
+INSERT INTO `activities` (`date`, `activityname`, `time`) VALUES
+('2021-12-01', 'Meeting', '06:08:21');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `logins`
 --
 
@@ -35,10 +55,6 @@ CREATE TABLE `logins` (
   `username` varchar(10) NOT NULL,
   `password` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- RELATIONSHIPS FOR TABLE `logins`:
---
 
 --
 -- Dumping data for table `logins`
@@ -63,12 +79,6 @@ CREATE TABLE `rents` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- RELATIONSHIPS FOR TABLE `rents`:
---   `username`
---       `logins` -> `username`
---
-
---
 -- Dumping data for table `rents`
 --
 
@@ -77,6 +87,27 @@ INSERT INTO `rents` (`username`, `duedate`, `dueamount`, `status`) VALUES
 ('a1', '2021-12-24', 9000, 'PAID'),
 ('a1', '2021-12-25', 5200, 'PAID'),
 ('a1', '2021-12-26', 6990, 'UNPAID');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tenants`
+--
+
+DROP TABLE IF EXISTS `tenants`;
+CREATE TABLE `tenants` (
+  `username` varchar(10) DEFAULT NULL,
+  `fullname` varchar(20) DEFAULT NULL,
+  `flatno` varchar(5) DEFAULT NULL,
+  `phoneno` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tenants`
+--
+
+INSERT INTO `tenants` (`username`, `fullname`, `flatno`, `phoneno`) VALUES
+('a1', 'Jon Doe', 'a1', 879796800);
 
 --
 -- Indexes for dumped tables
@@ -95,6 +126,12 @@ ALTER TABLE `rents`
   ADD KEY `username` (`username`);
 
 --
+-- Indexes for table `tenants`
+--
+ALTER TABLE `tenants`
+  ADD KEY `username` (`username`);
+
+--
 -- Constraints for dumped tables
 --
 
@@ -103,6 +140,12 @@ ALTER TABLE `rents`
 --
 ALTER TABLE `rents`
   ADD CONSTRAINT `rents_ibfk_1` FOREIGN KEY (`username`) REFERENCES `logins` (`username`);
+
+--
+-- Constraints for table `tenants`
+--
+ALTER TABLE `tenants`
+  ADD CONSTRAINT `tenants_ibfk_1` FOREIGN KEY (`username`) REFERENCES `logins` (`username`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
