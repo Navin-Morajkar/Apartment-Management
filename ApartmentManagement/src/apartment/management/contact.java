@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package apartment.management;
+
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,20 +16,23 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author RISHAB GHANTI
  */
 public class contact {
-     public static void sendMail(String recepient) throws MessagingException {
+
+    public static String msg, ft;
+
+    public static void sendMail(String recepient) throws MessagingException {
         System.out.println("Preparing to send email");
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");
-    
-     
 
         String myAccountEmail = "aptowner85@gmail.com";
         String password = "webtech123";
@@ -44,20 +48,28 @@ public class contact {
         System.out.println("Message sent successfully");
     }
 
-    
     private static Message prepareMessage(Session session, String myAccountEmail, String recepient) {
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-            message.setSubject("MY first email from java");
-            message.setText("Hey there!");
+            message.setSubject("AppartmentManagement email from " + ft);
+            message.setText("Greetings!!!" + msg);
+            
             return message;
-            
-            
+
         } catch (Exception ex) {
             Logger.getLogger(ContactController.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
         return null;
+    }
+
+    public static void setflat(String s) {
+        ft = s;
+    }
+
+    public static void setmessage(String s1) {
+        msg = s1;
     }
 }
