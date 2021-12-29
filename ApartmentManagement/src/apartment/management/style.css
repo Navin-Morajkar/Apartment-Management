@@ -41,6 +41,7 @@
 
 .table-row-cell, .tree-table-row-cell {
     -fx-cell-size: 40px;
+    
 }
 
 .table-cell {
@@ -50,13 +51,28 @@
     -fx-alignment: CENTER;
     
 }
+.statuscol {
+    
+    -fx-font-size: 40; 
+    -fx-text-fill: green;
+    -fx-alignment: CENTER;
+}
 
 
 .round-red {
-    -fx-background-color: linear-gradient(#ff5400, #be1d00);
+    /* -fx-background-color: linear-gradient(#ff5400, #be1d00); */
+    -fx-background-color: linear-gradient(#f2f2f2, #d6d6d6);
+    
     -fx-background-radius: 30;
     -fx-background-insets: 0;
     -fx-text-fill: red;
+}
+
+.round-red:hover {
+    /* -fx-background-color: linear-gradient(#ff5400, #be1d00); */
+    -fx-background-color: linear-gradient(#222222, #0f0f0f);
+
+    -fx-text-fill: white;
 }
 
 .bevel-grey {
@@ -68,4 +84,53 @@
     -fx-background-insets: 0,1,2;
     -fx-text-fill: maroon;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.bevel-grey:hover {
+      -fx-background-color: linear-gradient(#222222, #0f0f0f);
+ 
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.navbuttons {
+
+
+    -fx-background-color: linear-gradient(#ff5400, #be1d00);
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+}
+
+.navbuttons:hover {
+
+
+    -fx-background-color: linear-gradient(#222222, #0f0f0f);
+
+    -fx-background-insets: 0;
+    -fx-text-fill: red;
+}
+
+.navbuttons:pressed {
+
+
+    -fx-background-color: linear-gradient(#f2f2f2, #d6d6d6);
+
+    -fx-background-insets: 0;
+    -fx-text-fill: red;
+}
+.loginbutton{
+
+    -fx-background-color:  #eb0c0c;
+    -fx-background-radius: 5;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+}
+   
+
+.loginbutton:hover{
+    -fx-background-color: linear-gradient(#222222, #0f0f0f);
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+
 }

@@ -85,8 +85,7 @@ public class RentScreenController implements Initializable {
         col_dueamount.setCellValueFactory(new PropertyValueFactory<>("dueamount"));
         col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        rentsTableView.setItems(oblist);
-
+       
     }
 
     public void onPaidFilterSelect(ActionEvent event) throws IOException {
