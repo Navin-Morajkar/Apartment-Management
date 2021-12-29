@@ -83,7 +83,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="68.0" prefWidth="274.0" styleClass="navbuttons" stylesheets="@style.css" text="Contact Owner">
+            <Button mnemonicParsing="false" onAction="#contactowner" prefHeight="68.0" prefWidth="274.0" styleClass="navbuttons" stylesheets="@style.css" text="Contact Owner">
                <HBox.margin>
                   <Insets />
                </HBox.margin>

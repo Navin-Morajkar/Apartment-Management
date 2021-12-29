@@ -70,6 +70,14 @@ public class MainScreenController implements Initializable {
         Pane view = loader.getPage("ActivitiesScreen");
         mainPane.setCenter(view);
     }
+    @FXML
+    private void contactowner(ActionEvent event) {
+        System.out.println("You clicked me!");
+
+        LoadScreen loader = new LoadScreen();
+        Pane view = loader.getPage("contact");
+        mainPane.setCenter(view);
+    }
 
     @FXML
     private void logout(ActionEvent event) throws IOException {
