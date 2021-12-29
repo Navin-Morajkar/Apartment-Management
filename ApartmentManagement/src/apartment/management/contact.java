@@ -20,46 +20,44 @@ import javax.mail.internet.MimeMessage;
  * @author RISHAB GHANTI
  */
 public class contact {
-    public static void sendMail(String recepient) throws MessagingException
-{
-    System.out.println("Preparing to send email");
-    Properties properties=new Properties();
-properties.put("mail.smtp.auth","true");
-properties.put("mail.smtp.starttls.enable","true");
-properties.put("mail.smtp.host","smtp.gmail.com");
-properties.put("mail.smtp.port","25");
+     public static void sendMail(String recepient) throws MessagingException {
+        System.out.println("Preparing to send email");
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+    
+     
 
-String myAccountEmail="aptowner85@gmail.com";
-String password="webtech123";
+        String myAccountEmail = "aptowner85@gmail.com";
+        String password = "webtech123";
 
-Session session=Session.getInstance(properties,new Authenticator(){
-@Override
-protected PasswordAuthentication getPasswordAuthentication(){
-return new PasswordAuthentication(myAccountEmail,password);
-}
-});
-Message message=prepareMessage(session,myAccountEmail,recepient);
-Transport.send(message);
-    System.out.println("Message sent successfully");
-}
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(myAccountEmail, password);
+            }
+        });
+        Message message = prepareMessage(session, myAccountEmail, recepient);
+        Transport.send(message);
+        System.out.println("Message sent successfully");
+    }
 
+    
     private static Message prepareMessage(Session session, String myAccountEmail, String recepient) {
-try {
-Message message=new MimeMessage(session);
-message.setFrom(new InternetAddress(myAccountEmail));
-message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-message.setSubject("MY first email from java");
-} catch(Exception ex)
-{
-Logger.getLogger(JavaMailUtil.class.getName()).log(Level.SEVERE,null,ex);
-}
-return null;
-}
-
-    private static class JavaMailUtil {
-
-        public JavaMailUtil() {
-
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(myAccountEmail));
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
+            message.setSubject("MY first email from java");
+            message.setText("Hey there!");
+            return message;
+            
+            
+        } catch (Exception ex) {
+            Logger.getLogger(ContactController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
 }

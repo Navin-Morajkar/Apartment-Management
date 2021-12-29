@@ -33,5 +33,6 @@ try{
     }    // TODO
  catch(Exception e)
 {
+    e.printStackTrace();
 } 
 }}
