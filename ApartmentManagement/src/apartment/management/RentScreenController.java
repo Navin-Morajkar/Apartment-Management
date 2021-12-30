@@ -68,6 +68,26 @@ public class RentScreenController implements Initializable {
             Username = GlobalData.getUsername();
             Connection con = DBConnector.getConnection();
 
+            statement = con.prepareStatement("Select duedate,dueamount,status FROM rents where username  '"+ Username + "'= ? AND status = 'UNPAID'");
+
+            statement.setString(1, Username);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                oblist.add(new RentsTable(rs.getString("duedate"), rs.getString("dueamount"), rs.getString("status")));
+            }
+        } catch (SQLException ex) {
+//            Logger.getLogger(RentScreenController.class.getName()).log(Level.SEVERE,null,ex);
+            System.out.println(ex);
+        }
+
+        col_duedate.setCellValueFactory(new PropertyValueFactory<>("duedate"));
+        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("dueamount"));
+        col_status.setCellValueFactory(new PropertyValueFactory<>("status")); try {
+            clearRentTable();
+            Username = GlobalData.getUsername();
+            Connection con = DBConnector.getConnection();
+
             statement = con.prepareStatement("Select duedate,dueamount,status FROM rents where username = ? AND status = 'UNPAID'");
 
             statement.setString(1, Username);
@@ -84,6 +104,8 @@ public class RentScreenController implements Initializable {
         col_duedate.setCellValueFactory(new PropertyValueFactory<>("duedate"));
         col_dueamount.setCellValueFactory(new PropertyValueFactory<>("dueamount"));
         col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        rentsTableView.setItems(oblist);
 
        
     }

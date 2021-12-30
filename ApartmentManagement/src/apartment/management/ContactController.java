@@ -6,25 +6,19 @@ package apartment.management;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Properties;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.concurrent.CountDownLatch;
+import javafx.application.Platform;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import javafx.scene.image.ImageView;
 import javax.swing.JOptionPane;
 
 /**
@@ -43,17 +37,29 @@ public class ContactController implements Initializable {
     @FXML
     private Button submit;
 
+    @FXML
+    private ImageView spinner;
+
+    private boolean notfinish;
+    double progress;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
     }
 
     @FXML
     private void submitbtn(ActionEvent event) throws IOException {
+
+        if (flatno.getText().equals("") || message.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Flatno or Message cannot be blank");
+        } else {
         try {
             contact.setflat(flatno.getText());
             contact.setmessage(message.getText());
             contact.sendMail("aptowner85@gmail.com");
             JOptionPane.showMessageDialog(null, "Email sent successfully");
+
             flatno.setText("");
             message.setText("");
         } // TODO
@@ -63,6 +69,12 @@ public class ContactController implements Initializable {
             flatno.setText("");
             message.setText("");
         }
-    }
+        spinner.setVisible(true);
 
+        }
+    }
 }
+
+
+
+

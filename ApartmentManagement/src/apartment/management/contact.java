@@ -26,6 +26,7 @@ public class contact {
 
     public static String msg, ft;
 
+    
     public static void sendMail(String recepient) throws MessagingException {
         System.out.println("Preparing to send email");
         Properties properties = new Properties();
@@ -46,6 +47,8 @@ public class contact {
         Message message = prepareMessage(session, myAccountEmail, recepient);
         Transport.send(message);
         System.out.println("Message sent successfully");
+        
+        
     }
 
     private static Message prepareMessage(Session session, String myAccountEmail, String recepient) {
