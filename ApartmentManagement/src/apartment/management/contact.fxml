@@ -32,7 +32,7 @@
             <Image url="@img/contactowner.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="message" layoutX="210.0" layoutY="165.0" prefHeight="192.0" prefWidth="531.0">
+      <TextArea fx:id="message" layoutX="210.0" layoutY="165.0" prefHeight="192.0" prefWidth="531.0" wrapText="true">
          <effect>
             <DropShadow blurType="GAUSSIAN" color="#000000a9" height="60.46" offsetY="3.0" radius="22.1425" spread="0.21" width="30.11" />
          </effect></TextArea>

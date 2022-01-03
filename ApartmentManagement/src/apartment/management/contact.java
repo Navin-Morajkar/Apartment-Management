@@ -38,6 +38,7 @@ public class contact {
         String myAccountEmail = "aptowner85@gmail.com";
         String password = "webtech123";
 
+
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -56,8 +57,8 @@ public class contact {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-            message.setSubject("AppartmentManagement email from " + ft);
-            message.setText("Greetings!!!" + msg);
+            message.setSubject("[AppartmentManagement]Email From Flat: " + ft);
+            message.setText("Message :" + "\n" + msg);
             
             return message;
 
