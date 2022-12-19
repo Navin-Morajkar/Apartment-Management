@@ -67,8 +67,8 @@ public class loginController implements Initializable {
         } else {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                con = DriverManager.getConnection("jdbc:mysql://localhost/aptdb", "root", "");
-                pst = con.prepareStatement("select * from logins where username=? and password=?");
+                con = DriverManager.getConnection("jdbc:mysql://localhost/test4", "root", ""); //CHANGE DATABASE NAME HERE
+                pst = con.prepareStatement("select * from login_admin where username=? and password=?"); //CHANGE LOGIN HERE
                
                 pst.setString(1, username);
                 pst.setString(2, pass);
@@ -79,7 +79,7 @@ public class loginController implements Initializable {
                 // Login Authorization Section
                 rs = pst.executeQuery();
                 if (rs.next()) {
-                    name = rs.getString("name");
+                    name = rs.getString("username");
                     System.out.println(rs);
                     JOptionPane.showMessageDialog(null, "Login successful");
 //                    Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));

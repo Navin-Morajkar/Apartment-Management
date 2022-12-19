@@ -16,7 +16,7 @@ public class DBConnector {
     
     public static Connection getConnection() throws SQLException {
         
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/aptdb", "root","");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/test4", "root","");
         
         return connection;
     }

@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="sun.mail.javax" type="repository">
+    <properties maven-id="com.sun.mail:javax.mail:1.4.4" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/sun/mail/javax.mail/1.4.4/javax.mail-1.4.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/javax/activation/activation/1.1/activation-1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/sun/mail/javax.mail/1.4.4/javax.mail-1.4.4-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/javax/activation/activation/1.1/activation-1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

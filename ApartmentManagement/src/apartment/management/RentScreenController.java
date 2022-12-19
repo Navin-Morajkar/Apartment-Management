@@ -68,22 +68,28 @@ public class RentScreenController implements Initializable {
             Username = GlobalData.getUsername();
             Connection con = DBConnector.getConnection();
 
-            statement = con.prepareStatement("Select duedate,dueamount,status FROM rents where username  '"+ Username + "'= ? AND status = 'UNPAID'");
+            statement = con.prepareStatement("SELECT `bus_details`.`trip_no` AS `trip_no`,`bus_details`.`bus_no` AS `bus_no`, `bus_details`.`Source` AS `Source`,`bus_details`.`Destination` AS `Destination`,`bus_details`.`TripDate` AS `TripDate`,`trip_incharge`.`Driver_emp_id` AS `Driver_emp_id`,`trip_incharge`.`Conductor_emp_id` AS `Conductor_emp_id`,`trip_incharge`.`scheduled_dept_time` AS `scheduled_dept_time`,`trip_incharge`.`scheduled_arr_time` AS `scheduled_arr_time` FROM (`bus_details` join `trip_incharge` on(`trip_incharge`.`trip_no_incharge` = `bus_details`.`trip_no`))");
 
             statement.setString(1, Username);
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
-                oblist.add(new RentsTable(rs.getString("duedate"), rs.getString("dueamount"), rs.getString("status")));
+                oblist.add(new RentsTable(rs.getString("trip_no"), rs.getString("bus_no"),rs.getString("Source"),rs.getString("Destination"),rs.getString("TripDate"),rs.getString("Driver_emp_id"),rs.getString("Conductor_emp_id"),rs.getString("scheduled_dept_time"), rs.getString("scheduled_arr_time")));
             }
         } catch (SQLException ex) {
 //            Logger.getLogger(RentScreenController.class.getName()).log(Level.SEVERE,null,ex);
             System.out.println(ex);
         }
 
-        col_duedate.setCellValueFactory(new PropertyValueFactory<>("duedate"));
-        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("dueamount"));
-        col_status.setCellValueFactory(new PropertyValueFactory<>("status")); try {
+        col_duedate.setCellValueFactory(new PropertyValueFactory<>("trip_no"));
+        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("bus_no"));
+        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("Source"));
+        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("Destination"));
+        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("TripDate"));
+        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("Driver_emp_id"));
+        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("Conductor_emp_id"));
+        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("scheduled_dept_time"));
+        col_status.setCellValueFactory(new PropertyValueFactory<>("scheduled_arr_time")); try {
             clearRentTable();
             Username = GlobalData.getUsername();
             Connection con = DBConnector.getConnection();

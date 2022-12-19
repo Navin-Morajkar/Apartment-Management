@@ -6,7 +6,7 @@ package apartment.management;
 
 import java.net.URL;
 import javafx.scene.layout.Pane;
-import javafx.*;
+
 import javafx.fxml.FXMLLoader;
 
 /**
