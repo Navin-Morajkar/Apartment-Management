@@ -15,37 +15,21 @@ public class RentsTable {
     
    
     
-    String duedate,status,dueamount;
+    String trip_no,bus_no, Source, Destination,TripDate,Driver_emp_id,Conductor_emp_id,scheduled_dept_time,scheduled_arr_time;
+// oblist.add(new RentsTable(rs.getString("trip_no"), rs.getString("bus_no"),rs.getString("Source"),rs.getString("Destination"),rs.getString("TripDate"),rs.getString("Driver_emp_id"),rs.getString("Conductor_emp_id"),rs.getString("scheduled_dept_time"), rs.getString("scheduled_arr_time")));
 
-    public RentsTable(String duedate,  String dueamount, String status) {
-        this.duedate = duedate;
-        this.dueamount = dueamount;
-        this.status = status;
+    public RentsTable(String trip_no,  String bus_no, String Source, String Destination, String TripDate, String Driver_emp_id, String Conductor_emp_id, String scheduled_dept_time, String scheduled_arr_time) {
+        this.trip_no= trip_no;
+        this.bus_no = bus_no;
+        this.Source = Source;
+        this. Destination =  Destination;
+        this.TripDate = TripDate;
+        this.Driver_emp_id = Driver_emp_id;
+        this.Conductor_emp_id =Conductor_emp_id;
+        this.scheduled_dept_time = scheduled_dept_time;
+        this.scheduled_arr_time = scheduled_arr_time;
     }
 
-    public String getDuedate() {
-        return duedate;
-    }
-
-    public void setDuedate(String duedate) {
-        this.duedate = duedate;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getDueamount() {
-        return dueamount;
-    }
-
-    public void setDueamount(String dueamount) {
-        this.dueamount = dueamount;
-    }
 
    
     

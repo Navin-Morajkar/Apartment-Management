@@ -26,7 +26,6 @@ import javafx.scene.layout.Pane;
 /**
  * FXML Controller class
  *
- * @author Saish
  */
 public class RentScreenController implements Initializable {
 
@@ -38,13 +37,31 @@ public class RentScreenController implements Initializable {
     private TableView<RentsTable> rentsTableView;
 
     @FXML
-    private TableColumn<RentsTable, String> col_duedate;
+    private TableColumn<RentsTable, String> col_1;
 
     @FXML
-    private TableColumn<RentsTable, String> col_dueamount;
+    private TableColumn<RentsTable, String> col_2;
 
     @FXML
-    private TableColumn<RentsTable, String> col_status;
+    private TableColumn<RentsTable, String> col_3;
+    @FXML
+    private TableColumn<RentsTable, String> col_4;
+
+    @FXML
+    private TableColumn<RentsTable, String> col_5;
+
+    @FXML
+    private TableColumn<RentsTable, String> col_6;
+
+    @FXML
+    private TableColumn<RentsTable, String> col_7;
+
+    @FXML
+    private TableColumn<RentsTable, String> col_8;
+
+    @FXML
+    private TableColumn<RentsTable, String> col_9;
+
 
     @FXML
     private MenuItem paidBtn;
@@ -61,88 +78,67 @@ public class RentScreenController implements Initializable {
     ObservableList<RentsTable> oblist = FXCollections.observableArrayList();
 
     @FXML
-    public void onUnpaidFilterSelect(ActionEvent event) throws IOException {
+//    public void onUnpaidFilterSelect(ActionEvent event) throws IOException {
+//
+//        try {
+//            clearRentTable();
+//            Username = GlobalData.getUsername();
+//            Connection con = DBConnector.getConnection();
+//
+//            statement = con.prepareStatement("SELECT `bus_details`.`trip_no` AS `trip_no`,`bus_details`.`bus_no` AS `bus_no`, `bus_details`.`Source` AS `Source`,`bus_details`.`Destination` AS `Destination`,`bus_details`.`TripDate` AS `TripDate`,`trip_incharge`.`Driver_emp_id` AS `Driver_emp_id`,`trip_incharge`.`Conductor_emp_id` AS `Conductor_emp_id`,`trip_incharge`.`scheduled_dept_time` AS `scheduled_dept_time`,`trip_incharge`.`scheduled_arr_time` AS `scheduled_arr_time` FROM (`bus_details` join `trip_incharge` on(`trip_incharge`.`trip_no_incharge` = `bus_details`.`trip_no`))");
+//
+//            statement.setString(1, Username);
+//            ResultSet rs = statement.executeQuery();
+//
+//            while (rs.next()) {
+//                oblist.add(new RentsTable(rs.getString("trip_no"), rs.getString("bus_no"),rs.getString("Source"),rs.getString("Destination"),rs.getString("TripDate"),rs.getString("Driver_emp_id"),rs.getString("Conductor_emp_id"),rs.getString("scheduled_dept_time"), rs.getString("scheduled_arr_time")));
+//            }
+//        } catch (SQLException ex) {
+////            Logger.getLogger(RentScreenController.class.getName()).log(Level.SEVERE,null,ex);
+//            System.out.println(ex);
+//        }
+//
+//        col_duedate.setCellValueFactory(new PropertyValueFactory<>("trip_no"));
+//        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("bus_no"));
+//        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("Source"));
+//        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("Destination"));
+//        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("TripDate"));
+//        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("Driver_emp_id"));
+//        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("Conductor_emp_id"));
+//        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("scheduled_dept_time"));
+//        col_status.setCellValueFactory(new PropertyValueFactory<>("scheduled_arr_time")); try {
+//            clearRentTable();
+//            Username = GlobalData.getUsername();
+//            Connection con = DBConnector.getConnection();
+//
+//            statement = con.prepareStatement("SELECT `bus_details`.`trip_no` AS `trip_no`,`bus_details`.`bus_no` AS `bus_no`, `bus_details`.`Source` AS `Source`,`bus_details`.`Destination` AS `Destination`,`bus_details`.`TripDate` AS `TripDate`,`trip_incharge`.`Driver_emp_id` AS `Driver_emp_id`,`trip_incharge`.`Conductor_emp_id` AS `Conductor_emp_id`,`trip_incharge`.`scheduled_dept_time` AS `scheduled_dept_time`,`trip_incharge`.`scheduled_arr_time` AS `scheduled_arr_time` FROM (`bus_details` join `trip_incharge` on(`trip_incharge`.`trip_no_incharge` = `bus_details`.`trip_no`))");
+//
+//            statement.setString(1, Username);
+//            ResultSet rs = statement.executeQuery();
+//
+//            while (rs.next()) {
+//                oblist.add(new RentsTable(rs.getString("trip_no"), rs.getString("bus_no"),rs.getString("Source"),rs.getString("Destination"),rs.getString("TripDate"),rs.getString("Driver_emp_id"),rs.getString("Conductor_emp_id"),rs.getString("scheduled_dept_time"), rs.getString("scheduled_arr_time")));
+//            }
+//        } catch (SQLException ex) {
+////            Logger.getLogger(RentScreenController.class.getName()).log(Level.SEVERE,null,ex);
+//            System.out.println(ex);
+//        }
+//
+//        col_duedate.setCellValueFactory(new PropertyValueFactory<>("trip_no"));
+//        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("bus_no"));
+//        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("Source"));
+//        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("Destination"));
+//        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("TripDate"));
+//        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("Driver_emp_id"));
+//        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("Conductor_emp_id"));
+//        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("scheduled_dept_time"));
+//        col_status.setCellValueFactory(new PropertyValueFactory<>("scheduled_arr_time"));
+//
+//        rentsTableView.setItems(oblist);
+//
+//
+//    }
 
-        try {
-            clearRentTable();
-            Username = GlobalData.getUsername();
-            Connection con = DBConnector.getConnection();
-
-            statement = con.prepareStatement("SELECT `bus_details`.`trip_no` AS `trip_no`,`bus_details`.`bus_no` AS `bus_no`, `bus_details`.`Source` AS `Source`,`bus_details`.`Destination` AS `Destination`,`bus_details`.`TripDate` AS `TripDate`,`trip_incharge`.`Driver_emp_id` AS `Driver_emp_id`,`trip_incharge`.`Conductor_emp_id` AS `Conductor_emp_id`,`trip_incharge`.`scheduled_dept_time` AS `scheduled_dept_time`,`trip_incharge`.`scheduled_arr_time` AS `scheduled_arr_time` FROM (`bus_details` join `trip_incharge` on(`trip_incharge`.`trip_no_incharge` = `bus_details`.`trip_no`))");
-
-            statement.setString(1, Username);
-            ResultSet rs = statement.executeQuery();
-
-            while (rs.next()) {
-                oblist.add(new RentsTable(rs.getString("trip_no"), rs.getString("bus_no"),rs.getString("Source"),rs.getString("Destination"),rs.getString("TripDate"),rs.getString("Driver_emp_id"),rs.getString("Conductor_emp_id"),rs.getString("scheduled_dept_time"), rs.getString("scheduled_arr_time")));
-            }
-        } catch (SQLException ex) {
-//            Logger.getLogger(RentScreenController.class.getName()).log(Level.SEVERE,null,ex);
-            System.out.println(ex);
-        }
-
-        col_duedate.setCellValueFactory(new PropertyValueFactory<>("trip_no"));
-        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("bus_no"));
-        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("Source"));
-        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("Destination"));
-        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("TripDate"));
-        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("Driver_emp_id"));
-        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("Conductor_emp_id"));
-        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("scheduled_dept_time"));
-        col_status.setCellValueFactory(new PropertyValueFactory<>("scheduled_arr_time")); try {
-            clearRentTable();
-            Username = GlobalData.getUsername();
-            Connection con = DBConnector.getConnection();
-
-            statement = con.prepareStatement("Select duedate,dueamount,status FROM rents where username = ? AND status = 'UNPAID'");
-
-            statement.setString(1, Username);
-            ResultSet rs = statement.executeQuery();
-
-            while (rs.next()) {
-                oblist.add(new RentsTable(rs.getString("duedate"), rs.getString("dueamount"), rs.getString("status")));
-            }
-        } catch (SQLException ex) {
-//            Logger.getLogger(RentScreenController.class.getName()).log(Level.SEVERE,null,ex);
-            System.out.println(ex);
-        }
-
-        col_duedate.setCellValueFactory(new PropertyValueFactory<>("duedate"));
-        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("dueamount"));
-        col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
-
-        rentsTableView.setItems(oblist);
-
-       
-    }
-
-    public void onPaidFilterSelect(ActionEvent event) throws IOException {
-
-        try {
-            clearRentTable();
-            Username = GlobalData.getUsername();
-            Connection con = DBConnector.getConnection();
-
-            statement = con.prepareStatement("Select duedate,dueamount,status FROM rents where username = ? AND status = 'PAID'");
-
-            statement.setString(1, Username);
-            ResultSet rs = statement.executeQuery();
-
-            while (rs.next()) {
-                oblist.add(new RentsTable(rs.getString("duedate"), rs.getString("dueamount"), rs.getString("status")));
-            }
-        } catch (SQLException ex) {
-//            Logger.getLogger(RentScreenController.class.getName()).log(Level.SEVERE,null,ex);
-            System.out.println(ex);
-        }
-
-        col_duedate.setCellValueFactory(new PropertyValueFactory<>("duedate"));
-        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("dueamount"));
-        col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
-
-        rentsTableView.setItems(oblist);
-
-    }
 
     public void clearRentTable() {
         rentsTableView.getItems().clear();
@@ -152,36 +148,63 @@ public class RentScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
-
             Username = GlobalData.getUsername();
-
             Connection con = DBConnector.getConnection();
 
-            statement = con.prepareStatement("Select duedate,dueamount,status FROM rents where username = ?");
-            bal = con.prepareStatement("Select SUM(dueamount) AS bal FROM rents where username = ? AND status = 'UNPAID'");
+            statement = con.prepareStatement("SELECT `bus_details`.`trip_no` AS `trip_no`,`bus_details`.`bus_no` AS `bus_no`, `bus_details`.`Source` AS `Source`,`bus_details`.`Destination` AS `Destination`,`bus_details`.`TripDate` AS `TripDate`,`trip_incharge`.`Driver_emp_id` AS `Driver_emp_id`,`trip_incharge`.`Conductor_emp_id` AS `Conductor_emp_id`,`trip_incharge`.`scheduled_dept_time` AS `scheduled_dept_time`,`trip_incharge`.`scheduled_arr_time` AS `scheduled_arr_time` FROM (`bus_details` join `trip_incharge` on(`trip_incharge`.`trip_no_incharge` = `bus_details`.`trip_no`))");
 
             statement.setString(1, Username);
-            bal.setString(1, Username);
-
             ResultSet rs = statement.executeQuery();
-            ResultSet rs2 = bal.executeQuery();
 
             while (rs.next()) {
-                oblist.add(new RentsTable(rs.getString("duedate"), rs.getString("dueamount"), rs.getString("status")));
-            }
-            while (rs2.next()) {
-                bal_due.setText("₹ " +rs2.getString("bal"));
+                oblist.add(new RentsTable(rs.getString("trip_no"), rs.getString("bus_no"), rs.getString("Source"), rs.getString("Destination"), rs.getString("TripDate"), rs.getString("Driver_emp_id"), rs.getString("Conductor_emp_id"), rs.getString("scheduled_dept_time"), rs.getString("scheduled_arr_time")));
             }
         } catch (SQLException ex) {
 //            Logger.getLogger(RentScreenController.class.getName()).log(Level.SEVERE,null,ex);
             System.out.println(ex);
         }
 
-        col_duedate.setCellValueFactory(new PropertyValueFactory<>("duedate"));
-        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("dueamount"));
-        col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        col_1.setCellValueFactory(new PropertyValueFactory<>("trip_no"));
+        col_2.setCellValueFactory(new PropertyValueFactory<>("bus_no"));
+        col_3.setCellValueFactory(new PropertyValueFactory<>("Source"));
+        col_4.setCellValueFactory(new PropertyValueFactory<>("Destination"));
+        col_5.setCellValueFactory(new PropertyValueFactory<>("TripDate"));
+        col_6.setCellValueFactory(new PropertyValueFactory<>("Driver_emp_id"));
+        col_7.setCellValueFactory(new PropertyValueFactory<>("Conductor_emp_id"));
+        col_8.setCellValueFactory(new PropertyValueFactory<>("scheduled_dept_time"));
+        col_9.setCellValueFactory(new PropertyValueFactory<>("scheduled_arr_time"));
 
         rentsTableView.setItems(oblist);
-    }
 
+//            Username = GlobalData.getUsername();
+//
+//            Connection con = DBConnector.getConnection();
+//
+//            statement = con.prepareStatement("Select duedate,dueamount,status FROM rents where username = ?");
+//            bal = con.prepareStatement("Select SUM(dueamount) AS bal FROM rents where username = ? AND status = 'UNPAID'");
+//
+//            statement.setString(1, Username);
+//            bal.setString(1, Username);
+//
+//            ResultSet rs = statement.executeQuery();
+//            ResultSet rs2 = bal.executeQuery();
+//
+//            while (rs.next()) {
+//                oblist.add(new RentsTable(rs.getString("trip_no"), rs.getString("bus_no"),rs.getString("Source"),rs.getString("Destination"),rs.getString("TripDate"),rs.getString("Driver_emp_id"),rs.getString("Conductor_emp_id"),rs.getString("scheduled_dept_time"), rs.getString("scheduled_arr_time")));
+//            }
+//            while (rs2.next()) {
+//                bal_due.setText("₹ " +rs2.getString("bal"));
+//            }
+//        } catch (SQLException ex) {
+////            Logger.getLogger(RentScreenController.class.getName()).log(Level.SEVERE,null,ex);
+//            System.out.println(ex);
+//        }
+//
+//        col_duedate.setCellValueFactory(new PropertyValueFactory<>("duedate"));
+//        col_dueamount.setCellValueFactory(new PropertyValueFactory<>("dueamount"));
+//        col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+//
+//        rentsTableView.setItems(oblist);
+//    }
+    }
 }
