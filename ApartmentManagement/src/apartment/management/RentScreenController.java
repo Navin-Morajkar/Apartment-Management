@@ -153,7 +153,7 @@ public class RentScreenController implements Initializable {
 
             statement = con.prepareStatement("SELECT `bus_details`.`trip_no` AS `trip_no`,`bus_details`.`bus_no` AS `bus_no`, `bus_details`.`Source` AS `Source`,`bus_details`.`Destination` AS `Destination`,`bus_details`.`TripDate` AS `TripDate`,`trip_incharge`.`Driver_emp_id` AS `Driver_emp_id`,`trip_incharge`.`Conductor_emp_id` AS `Conductor_emp_id`,`trip_incharge`.`scheduled_dept_time` AS `scheduled_dept_time`,`trip_incharge`.`scheduled_arr_time` AS `scheduled_arr_time` FROM (`bus_details` join `trip_incharge` on(`trip_incharge`.`trip_no_incharge` = `bus_details`.`trip_no`))");
 
-            statement.setString(1, Username);
+
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -169,8 +169,8 @@ public class RentScreenController implements Initializable {
         col_3.setCellValueFactory(new PropertyValueFactory<>("Source"));
         col_4.setCellValueFactory(new PropertyValueFactory<>("Destination"));
         col_5.setCellValueFactory(new PropertyValueFactory<>("TripDate"));
-        col_6.setCellValueFactory(new PropertyValueFactory<>("Driver_emp_id"));
-        col_7.setCellValueFactory(new PropertyValueFactory<>("Conductor_emp_id"));
+        col_7.setCellValueFactory(new PropertyValueFactory<>("Driver_emp_id"));
+        col_6.setCellValueFactory(new PropertyValueFactory<>("Conductor_emp_id"));
         col_8.setCellValueFactory(new PropertyValueFactory<>("scheduled_dept_time"));
         col_9.setCellValueFactory(new PropertyValueFactory<>("scheduled_arr_time"));
 
