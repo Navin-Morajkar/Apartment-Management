@@ -21,11 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javax.swing.JOptionPane;
 
-/**
- * FXML Controller class
- *
- * @author RISHAB GHANTI
- */
+
 public class ContactController implements Initializable {
 
     @FXML

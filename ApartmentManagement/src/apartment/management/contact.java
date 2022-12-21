@@ -18,10 +18,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author RISHAB GHANTI
- */
+
 public class contact {
 
     public static String msg, ft;
