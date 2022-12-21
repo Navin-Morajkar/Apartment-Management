@@ -4,43 +4,31 @@
  */
 package apartment.management;
 
-/**
- *
- * @author RISHAB GHANTI
- */
 public class ActivitiesTable {
 
-String date,activityname,time;
 
-    public String getDate() {
-        return date;
-    }
+        String bus_no;
+        Double MILAGE;
+        public ActivitiesTable (String bus_no, Double MILAGE) {
+            this.bus_no = bus_no;//
+            this.MILAGE = MILAGE;
 
-    public void setDate(String date) {
-        this.date = date;
-    }
+        }
+        public String getBus_no() {
+            return bus_no;
+        }
 
-    public String getActivityname() {
-        return activityname;
-    }
+        public void setBus_no(String bus_no) {
+            this.bus_no = bus_no;
+        }
+        //
+        public Double getMILAGE() {
+            return MILAGE;
+        }
 
-    public void setActivityname(String activityname) {
-        this.activityname = activityname;
-    }
+        public void setMILAGE(Double MILAGE) {
+            this.MILAGE = MILAGE;
+        }
+        ///
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public ActivitiesTable(String date, String activityname, String time) {
-        this.date = date;
-        this.activityname = activityname;
-        this.time = time;
-    }
-
-    
 }

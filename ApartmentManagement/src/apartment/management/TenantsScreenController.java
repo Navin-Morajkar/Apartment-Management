@@ -18,10 +18,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-/**
- *
- * @author RISHAB GHANTI
- */
 public class TenantsScreenController implements Initializable {
     
 
@@ -29,13 +25,13 @@ public class TenantsScreenController implements Initializable {
     private TableView<Tenantstable> tenantstableview;
 
     @FXML
-    private TableColumn<Tenantstable, String> col_fullname;
+    private TableColumn<Tenantstable, String> col_1;
 
     @FXML
-    private TableColumn<Tenantstable, String> col_flatno;
+    private TableColumn<Tenantstable, String> col_2;
 
     @FXML
-    private TableColumn<Tenantstable, String> col_phoneno;
+    private TableColumn<Tenantstable, String> col_3;
 
 ObservableList<Tenantstable> oblist = FXCollections.observableArrayList();
 PreparedStatement statement;
@@ -47,22 +43,22 @@ PreparedStatement statement;
             
             Connection con = DBConnector.getConnection();
 
-            statement = con.prepareStatement("Select fullname,flatno,phoneno FROM tenants");
+            statement = con.prepareStatement("SELECT * FROM `RevenuePerBus`");
 
             
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
-                oblist.add(new Tenantstable(rs.getString("fullname"), rs.getString("flatno"), rs.getString("phoneno")));
+                oblist.add(new Tenantstable(rs.getString("bus_no"), rs.getString("revenue"), rs.getString("tickets_sold")));
             }
         } catch (SQLException ex) {
 //            Logger.getLogger(RentScreenController.class.getName()).log(Level.SEVERE,null,ex);
             System.out.println(ex);
         }
 
-        col_fullname.setCellValueFactory(new PropertyValueFactory<>("fullname"));
-        col_flatno.setCellValueFactory(new PropertyValueFactory<>("flatno"));
-        col_phoneno.setCellValueFactory(new PropertyValueFactory<>("phoneno"));
+        col_1.setCellValueFactory(new PropertyValueFactory<>("bus_no"));
+        col_2.setCellValueFactory(new PropertyValueFactory<>("revenue"));
+        col_3.setCellValueFactory(new PropertyValueFactory<>("tickets_sold"));
 
         tenantstableview.setItems(oblist);
     }

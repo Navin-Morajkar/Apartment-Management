@@ -8,41 +8,37 @@ package apartment.management;
 
 /**
  *
- * @author RISHAB GHANTI
  */
 public class Tenantstable {
-    
-    
-    String fullname,flatno,phoneno;
 
-    public Tenantstable(String fullname, String flatno, String phoneno) {
-        this.fullname = fullname;
-        this.flatno = flatno;
-        this.phoneno = phoneno;
+    String bus_no,revenue,tickets_sold;
+    public Tenantstable(String bus_no, String revenue, String tickets_sold) {
+        this.bus_no = bus_no;//
+        this.revenue = revenue;
+        this.tickets_sold =tickets_sold;
+    }
+    public String getBus_no() {
+        return bus_no;
     }
 
-    public String getFullname() {
-        return fullname;
+    public void setBus_no(String bus_no) {
+        this.bus_no = bus_no;
+    }
+    //
+    public String getRevenue() {
+        return revenue;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setRevenue(String revenue) {
+        this.revenue = revenue;
+    }
+    ///
+    public String getTickets_sold() {
+        return tickets_sold;
     }
 
-    public String getFlatno() {
-        return flatno;
+    public void setTickets_sold(String tickets_sold){
+        this.tickets_sold = tickets_sold;
     }
 
-    public void setFlatno(String flatno) {
-        this.flatno = flatno;
-    }
-
-    public String getPhoneno() {
-        return phoneno;
-    }
-
-    public void setPhoneno(String phoneno) {
-        this.phoneno = phoneno;
-    }
-    
 }

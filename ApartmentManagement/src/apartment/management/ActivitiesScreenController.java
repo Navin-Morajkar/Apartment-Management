@@ -30,13 +30,11 @@ public class ActivitiesScreenController implements Initializable {
     private TableView<ActivitiesTable>activitiestable ;
 
     @FXML
-    private TableColumn<ActivitiesTable, String> col_date;
+    private TableColumn<ActivitiesTable, String> col_1;
 
     @FXML
-    private TableColumn<ActivitiesTable, String> col_activityname;
+    private TableColumn<ActivitiesTable, String> col_2;
 
-    @FXML
-    private TableColumn<ActivitiesTable, String> col_time;
 
 
     PreparedStatement statement;
@@ -53,22 +51,21 @@ public class ActivitiesScreenController implements Initializable {
             
             Connection con = DBConnector.getConnection();
 
-            statement = con.prepareStatement("Select * FROM activities ");
+            statement = con.prepareStatement("SELECT * FROM `mileage` ");
 
             //statement.setString(1, Username);
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
-                oblist.add(new ActivitiesTable(rs.getString("date"), rs.getString("activityname"), rs.getString("time")));
+                oblist.add(new ActivitiesTable(rs.getString("bus_no"), rs.getDouble("MILAGE")));
             }
         } catch (SQLException ex) {
 //            Logger.getLogger(RentScreenController.class.getName()).log(Level.SEVERE,null,ex);
             System.out.println(ex);
         }
 
-        col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
-        col_activityname.setCellValueFactory(new PropertyValueFactory<>("activityname"));
-        col_time.setCellValueFactory(new PropertyValueFactory<>("time"));
+        col_1.setCellValueFactory(new PropertyValueFactory<>("bus_no"));
+        col_2.setCellValueFactory(new PropertyValueFactory<>("MILAGE"));
 
         activitiestable.setItems(oblist);
     }
