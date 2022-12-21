@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="520.0" prefWidth="1183.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="apartment.management.ActivitiesScreenController">
+   <children>
+      <Label layoutX="987.0" layoutY="28.0" prefHeight="59.0" prefWidth="178.0" text="Mileage" textFill="#d00606">
+         <font>
+            <Font name="System Bold" size="37.0" />
+         </font>
+      </Label>
+      <TableView fx:id="activitiestable" layoutX="14.0" layoutY="126.0" prefHeight="378.0" prefWidth="1151.0" stylesheets="@style.css">
+        <columns>
+          <TableColumn fx:id="col_1" prefWidth="542.0" text="Bus number" />
+          <TableColumn fx:id="col_2" prefWidth="590.0" text="Mileage" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
