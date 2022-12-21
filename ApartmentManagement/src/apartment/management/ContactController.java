@@ -1,76 +1,66 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package apartment.management;
 
-import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.concurrent.CountDownLatch;
-import javafx.application.Platform;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javax.swing.JOptionPane;
-
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ContactController implements Initializable {
 
-    @FXML
-    private TextField flatno;
 
     @FXML
-    private TextArea message;
+    private TableView<Tenantstable> tenantstableview;
 
     @FXML
-    private Button submit;
+    private TableColumn<Tenantstable, String> col_1;
 
     @FXML
-    private ImageView spinner;
+    private TableColumn<Tenantstable, String> col_2;
 
-    private boolean notfinish;
-    double progress;
+    @FXML
+    private TableColumn<Tenantstable, String> col_3;
 
+    ObservableList<Tenantstable> oblist = FXCollections.observableArrayList();
+    PreparedStatement statement;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-    }
-
-    @FXML
-    private void submitbtn(ActionEvent event) throws IOException {
-
-        if (flatno.getText().equals("") || message.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Flatno or Message cannot be blank");
-        } else {
         try {
-            contact.setflat(flatno.getText());
-            contact.setmessage(message.getText());
-            contact.sendMail("aptowner85@gmail.com");
-            JOptionPane.showMessageDialog(null, "Email sent successfully");
 
-            flatno.setText("");
-            message.setText("");
-        } // TODO
-        catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Email failed");
-            flatno.setText("");
-            message.setText("");
-        }
-        spinner.setVisible(true);
 
+            Connection con = DBConnector.getConnection();
+
+            statement = con.prepareStatement("SELECT * FROM `lossmaking`");
+
+
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                oblist.add(new Tenantstable(rs.getString("trip_no"), rs.getString("revenue"), rs.getString("tickets_sold")));
+            }
+        } catch (SQLException ex) {
+//            Logger.getLogger(RentScreenController.class.getName()).log(Level.SEVERE,null,ex);
+            System.out.println(ex);
         }
+
+        col_1.setCellValueFactory(new PropertyValueFactory<>("trip_no"));
+        col_2.setCellValueFactory(new PropertyValueFactory<>("revenue"));
+        col_3.setCellValueFactory(new PropertyValueFactory<>("tickets_sold"));
+
+        tenantstableview.setItems(oblist);
     }
+
 }
-
-
-
-

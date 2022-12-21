@@ -2,9 +2,11 @@
   <library name="lib">
     <CLASSES>
       <root url="file://F:/Navin/javafx-sdk-19/lib" />
+      <root url="file://$PATH_TO_FX$" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <jarDirectory url="file://$PATH_TO_FX$" recursive="false" />
     <jarDirectory url="file://F:/Navin/javafx-sdk-19/lib" recursive="false" />
   </library>
 </component>
