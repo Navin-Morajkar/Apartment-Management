@@ -48,7 +48,7 @@
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/rentico-white.png" />
+                        <Image url="@img/schedule.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -63,7 +63,7 @@
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/tenant.png" />
+                        <Image url="@img/revenue.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -78,7 +78,7 @@
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/activity.png" />
+                        <Image url="@img/mileage.png" />
                      </image>
                   </ImageView>
                </graphic>
