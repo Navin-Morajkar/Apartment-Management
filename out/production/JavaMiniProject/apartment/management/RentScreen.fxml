@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="520.0" prefWidth="1183.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="apartment.management.RentScreenController">
+   <children>
+      <Label layoutX="900.0" layoutY="13.0" prefHeight="58.0" prefWidth="204.0" text="Time Table" textFill="#d00606">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+      <TableView fx:id="rentsTableView" layoutX="14.0" layoutY="126.0" prefHeight="378.0" prefWidth="1151.0" stylesheets="@style.css">
+        <columns>
+          <TableColumn fx:id="col_1" minWidth="5.0" prefWidth="150.0" text="Trip Number" />
+          <TableColumn fx:id="col_2" prefWidth="150.0" text="Bus Number" />
+            <TableColumn fx:id="col_3" minWidth="0.0" prefWidth="150.0" text="source" />
+            <TableColumn fx:id="col_4" prefWidth="150.0" text="destination" />
+            <TableColumn fx:id="col_5" prefWidth="100.0" text="Trip date" />
+            <TableColumn fx:id="col_6" prefWidth="70.0" text="Conductor ID" />
+            <TableColumn fx:id="col_7" prefWidth="100.0" text="Driver id" />
+            <TableColumn fx:id="col_8" prefWidth="100.0" text="Departure time" />
+            <TableColumn fx:id="col_9" prefWidth="150.0" text="Arrival time" />
+        </columns>
+      </TableView>
+      <Label layoutX="36.0" layoutY="22.0" prefHeight="80.0" prefWidth="306.0" text="Time Table:">
+         <font>
+            <Font name="Arial" size="37.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="45.0" fitWidth="42.0" layoutX="1112.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/rentico.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
